@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <ProjectGuid>{b7376eba-2e07-4b7a-a5b3-c5dfc022e0d1}</ProjectGuid>
+    <avrdevice>AT90USB162</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>Wire</AssemblyName>
+    <Name>JediCutFirmware</Name>
+    <RootNamespace>Wire</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>2.11.1</AsfVersion>
+    <avrtoolinterface />
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue />
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <avrtool />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <UsesExternalMakeFile>True</UsesExternalMakeFile>
+    <ExternalMakeFilePath>C:\AVR projects\WireCutterCNC\Wire\makefile</ExternalMakeFilePath>
+    <OutputDirectory>C:\AVR projects\WireCutterCNC\Wire</OutputDirectory>
+    <ToolchainSettings>
+      <AvrGcc xmlns="">
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>MCU=at90usb162</Value>
+            <Value>F_CPU=8000000</Value>
+            <Value>BOARD=USER</Value>
+            <Value>ARCH=AVR8</Value>
+            <Value>F_USB=8000000</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>../libs</Value>
+            <Value>../libs/LUFA</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>m</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>../libs</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc xmlns="">
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>m</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+    <UsesExternalMakeFile>True</UsesExternalMakeFile>
+    <ExternalMakeFilePath>makefile</ExternalMakeFilePath>
+    <OutputDirectory>
+    </OutputDirectory>
+    <PostBuildEvent>"C:\Program Files (x86)\Atmel\Flip 3.4.7\bin\batchisp.exe" -device at90usb162 -hardware USB -operation erase f loadbuffer "D:\AVR projects\JediCutWireCutter\JediCutSerial\VirtualSerial.hex" program verify start reset 0
+
+</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Board\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Descriptors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Descriptors.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="readme.txt">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Stepper\StepperMotor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Stepper\StepperMotor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Stepper\StepperMotorConfig.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="JediCutFirmware.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="JediCutFirmware.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Board" />
+    <Folder Include="Driver\" />
+    <Folder Include="Stepper" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Driver\LUFA VirtualSerial.inf">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="makefile">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
